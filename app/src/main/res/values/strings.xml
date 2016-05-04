@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">BeesNavi</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_message">Welcome to BeesNavi.</string>
+    <string name="type">Type in the start room number</string>
+    <string name="scan">Scan the start room number</string>
 </resources>
