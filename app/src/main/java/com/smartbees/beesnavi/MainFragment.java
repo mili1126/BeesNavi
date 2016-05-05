@@ -1,6 +1,7 @@
 package com.smartbees.beesnavi;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,10 +20,13 @@ import android.widget.Button;
  */
 public class MainFragment extends Fragment {
     private static final String TAG = "MainFragment";
-
+    private Callbacks mCallbacks;
     Button mScanButton;
     Button mTypeButton;
 
+    public interface Callbacks {
+        void replaceFragment(Fragment fragment);
+    }
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,6 +61,12 @@ public class MainFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mCallbacks = (Callbacks) activity;
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -87,17 +97,17 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 Log.d(TAG, "mTypeButton clicked");
                 // Start new navigation activity
-                Intent i = new Intent(getActivity(), NavigationActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(getActivity(), NavigationActivity.class);
+//                startActivity(i);
                 // Start new navigation fragment
-
+                NavigationFragment fragment = NavigationFragment.newInstance(null, null);
+                mCallbacks.replaceFragment(fragment);
 
             }
         });
 
         return view;
     }
-
 
 
 }
