@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends SingleFragmentActivity implements MainFragment.Callbacks{
+public class MainActivity extends SingleFragmentActivity{
     @Override
     protected Fragment createFragment() {
         return new MainFragment();
@@ -24,17 +24,6 @@ public class MainActivity extends SingleFragmentActivity implements MainFragment
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         super.onResume();
-    }
-
-    @Override
-    public void replaceFragment(Fragment fragment) {
-        FragmentManager fm = getSupportFragmentManager();
-
-        if (fragment != null) {
-            fm.beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .commit();
-        }
     }
 
 }
